@@ -23,7 +23,7 @@ public class Ejemplo extends Application {
         
         Scene scene = new Scene(root);
         scene.getStylesheets().add(Ejemplo.class.getResource("UMP-Style.css").toExternalForm());
-        stage.setTitle("Ejemplo");
+        stage.setTitle("Ejemplo version 1");
         
         stage.setScene(scene);
         stage.show();
