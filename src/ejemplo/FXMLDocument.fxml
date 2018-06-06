@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="850.0" prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ejemplo.FXMLDocumentController">
+   <content>
+      <BorderPane>
+         <top>
+            <VBox styleClass="pane_Derechos" stylesheets="@../Box%20Sync/Software%20UMP/PitraBackFX/src/pitrabackfx/UMP-Style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox maxHeight="108.0" minHeight="108.0" prefHeight="108.0" prefWidth="200.0" styleClass="pane_headUCR">
+                     <children>
+                        <ImageView fitHeight="79.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../../Downloads/programacin/Logo%20ucr%20final.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <ImageView fitHeight="79.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../../Downloads/programacin/Logo%20lanamme%20Final.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </top>
+         <bottom>
+            <VBox BorderPane.alignment="CENTER">
+               <children>
+                  <HBox layoutX="10.0" layoutY="10.0" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" styleClass="pane_footUCR" stylesheets="@../Box%20Sync/Software%20UMP/PitraBackFX/src/pitrabackfx/UMP-Style.css">
+                     <children>
+                        <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                        <Label id="footerLabel" ellipsisString="" prefHeight="60.0" stylesheets="@../Box%20Sync/Software%20UMP/PitraBackFX/src/pitrabackfx/UMP-Style.css" text=" © 2018 Laboratorio Nacional de Materiales y Modelos Estructurales" />
+                        <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </bottom>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </content>
+</ScrollPane>

@@ -1,0 +1,45 @@
+
+.root{
+    -fx-font-size: 1em;
+    -fx-font-family: "Arial";
+    -fx-accent: RGB(0,93,164);
+    -fx-base: RGB(230,230,230);
+    -fx-background: RGB(240,240,240);
+}
+/*******************************************************************************
+ *                                                                             *
+ * Custom Style                                                                *
+ *                                                                             *
+ ******************************************************************************/
+#footerLabel{
+    -fx-text-fill: -fx-light-text-color;
+}
+
+#prueba {
+    -fx-font-family: Arial;
+    -fx-font-size: 1em;
+}
+
+.pane_headUCR{
+    -fx-background-color: -fx-accent;
+    -fx-min-heigth:108px;
+    -fx-max-heigth:108px;
+    -fx-pref-heigth:108px;
+}
+.pane_footUCR{
+    -fx-background-color: RGB(102,102,102);
+    -fx-min-heigth:60px;
+    -fx-max-heigth:60px;
+    -fx-pref-heigth:60px;
+}
+.AnchorPane{
+    -fx-background-color: RGB(240,240,240);
+}
+.text-field-table-cell .text-field {
+    -fx-padding: 1; 
+    -fx-border-color:red; 
+    -fx-border-width:1; 
+    -fx-background-color:yellow;
+}
+
+
