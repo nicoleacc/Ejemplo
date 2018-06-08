@@ -1,36 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="850.0" prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ejemplo.FXMLDocumentController">
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="850.0" prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ejemplo.FXMLDocumentController">
    <content>
       <BorderPane>
          <top>
-            <VBox styleClass="pane_Derechos" stylesheets="@../Box%20Sync/Software%20UMP/PitraBackFX/src/pitrabackfx/UMP-Style.css" BorderPane.alignment="CENTER">
+            <VBox styleClass="pane_Derechos" BorderPane.alignment="CENTER">
                <children>
                   <HBox maxHeight="108.0" minHeight="108.0" prefHeight="108.0" prefWidth="200.0" styleClass="pane_headUCR">
                      <children>
                         <ImageView fitHeight="79.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../../../Downloads/programacin/Logo%20ucr%20final.png" />
+                              <Image url="@imagenes/Logo%20ucr%20final.png" />
                            </image>
                            <HBox.margin>
                               <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
@@ -39,7 +35,7 @@
                         <Region HBox.hgrow="ALWAYS" />
                         <ImageView fitHeight="79.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../../../Downloads/programacin/Logo%20lanamme%20Final.png" />
+                              <Image url="@imagenes/Logo%20lanamme%20Final.png" />
                            </image>
                            <HBox.margin>
                               <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
@@ -53,10 +49,10 @@
          <bottom>
             <VBox BorderPane.alignment="CENTER">
                <children>
-                  <HBox layoutX="10.0" layoutY="10.0" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" styleClass="pane_footUCR" stylesheets="@../Box%20Sync/Software%20UMP/PitraBackFX/src/pitrabackfx/UMP-Style.css">
+                  <HBox layoutX="10.0" layoutY="10.0" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" styleClass="pane_footUCR">
                      <children>
                         <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                        <Label id="footerLabel" ellipsisString="" prefHeight="60.0" stylesheets="@../Box%20Sync/Software%20UMP/PitraBackFX/src/pitrabackfx/UMP-Style.css" text=" © 2018 Laboratorio Nacional de Materiales y Modelos Estructurales" />
+                        <Label id="footerLabel" ellipsisString="" prefHeight="60.0" text=" © 2018 Laboratorio Nacional de Materiales y Modelos Estructurales" />
                         <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
@@ -64,7 +60,53 @@
             </VBox>
          </bottom>
          <center>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <VBox BorderPane.alignment="CENTER">
+               <children>
+                  <Region minHeight="5.0" prefHeight="10.0" VBox.vgrow="NEVER" />
+                  <HBox VBox.vgrow="ALWAYS">
+                     <children>
+                        <Region layoutX="953.0" layoutY="10.0" minWidth="5.0" prefWidth="5.0" />
+                        <SplitPane fx:id="divider" dividerPositions="0.8" HBox.hgrow="ALWAYS">
+                           <items>
+                              <TableView fx:id="dataBaseTable">
+                                <columns>
+                                  <TableColumn fx:id="dataStation" prefWidth="75.0" text="Estación" />
+                                  <TableColumn fx:id="dataRepetition" prefWidth="75.0" text="Repetición" />
+                                    <TableColumn fx:id="dataStress" prefWidth="75.0" text="Esfuerzo" />
+                                </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                              <HBox minWidth="0.0">
+                                 <children>
+                                    <TextArea fx:id="contents" editable="false" text="Contenido del Archivo" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                           </items>
+                        </SplitPane>
+                        <Region prefWidth="5.0" />
+                     </children>
+                  </HBox>
+                  <Region minHeight="5.0" prefHeight="5.0" />
+                  <HBox>
+                     <children>
+                        <Region prefWidth="5.0" />
+                        <Button fx:id="openRSP" minWidth="90.0" mnemonicParsing="false" onAction="#openRSP" text="Abrir" />
+                        <Region layoutX="10.0" layoutY="10.0" prefWidth="5.0" />
+                        <Button fx:id="editRSP" layoutX="15.0" layoutY="10.0" minWidth="90.0" mnemonicParsing="false" onAction="#editRSP" text="Editar" />
+                        <Region layoutX="105.0" layoutY="10.0" prefWidth="5.0" />
+                        <Button fx:id="saveRSP" layoutX="110.0" layoutY="10.0" minWidth="90.0" mnemonicParsing="false" onAction="#saveRSP" text="Guardar" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <ToggleButton fx:id="showRSP" mnemonicParsing="false" onAction="#showContents" text="Contenido " />
+                        <Region layoutX="295.0" layoutY="10.0" minWidth="5.0" HBox.hgrow="NEVER" />
+                        <Button fx:id="exportRSP" layoutX="110.0" layoutY="10.0" minWidth="90.0" mnemonicParsing="false" onAction="#exportRSP" text="Exportar" />
+                        <Region layoutX="105.0" layoutY="10.0" prefWidth="5.0" />
+                     </children>
+                  </HBox>
+                  <Region layoutX="10.0" layoutY="10.0" minHeight="5.0" prefHeight="5.0" />
+               </children>
+            </VBox>
          </center>
       </BorderPane>
    </content>
