@@ -26,16 +26,19 @@ public class Ejemplo extends Application {
         //LE AGREGUE UN ICONO FAVOR CREAR UN ICONO DIFERENTE PARA ESTA APLICACION
         stage.getIcons().add(new Image("ejemplo/imagenes/ICON.png"));
         //PARA CAMBIAR EL TITULO MODIFIQUE ESTE STRING
-        stage.setTitle("Prueba de Nicole");
+        stage.setTitle("De RSP a CSV");
         stage.setScene(scene);
         stage.show();
     }
 
     /**
      * @param args the command line arguments
+     * @throws java.io.FileNotFoundException
      */
-    public static void main(String[] args) {
+    
+    public static void main(String[] args)  {
         launch(args);
     }
-
 }
+
+

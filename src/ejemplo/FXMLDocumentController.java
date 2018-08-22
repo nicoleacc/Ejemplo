@@ -51,11 +51,33 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button saveRSP;
     @FXML
-    private TableColumn<RspData, String> dataStation;
+    private TableColumn<RspData, String> dataRuta;
     @FXML
-    private TableColumn<RspData, Number> dataRepetition;
+    private TableColumn<RspData, String> dataFecha;
     @FXML
-    private TableColumn<RspData, Number> dataStress;
+    private TableColumn<RspData, String> dataDescripcion;
+    @FXML
+    private TableColumn<RspData, Number> dataEst_ini;
+    @FXML
+    private TableColumn<RspData, Number> dataEst_fin;
+    @FXML
+    private TableColumn<RspData, Number> dataIri_izq;
+    @FXML
+    private TableColumn<RspData, Number> dataIri_cen;
+    @FXML
+    private TableColumn<RspData, Number> dataIri_der;
+    @FXML
+    private TableColumn<RspData, Number> dataMri;
+    @FXML
+    private TableColumn<RspData, Number> dataEst;
+    @FXML
+    private TableColumn<RspData, String> dataEvento;
+    @FXML
+     private TableColumn<RspData, Number> dataLatitud;
+    @FXML
+    private TableColumn<RspData, Number> dataLongitud;
+    @FXML
+    private TableColumn<RspData, String> dataNotas;
     @FXML
     private TableView<RspData> dataBaseTable;
 
@@ -88,9 +110,9 @@ public class FXMLDocumentController implements Initializable {
 //        COMENTE LA SECCION PARA AÑADIR FILTRO AL FILE CHOOSER 
 //        POR QUE NO TENGO ARCHIVOS RSP PARA PROBAR, CUANDO USTED
 //        QUIERA LO ACTIVA Y ASÍ SOLO VISUALIZA LOS ARCHIVOS RSP
-//        FileChooser.ExtensionFilter extFilter
-//                = new FileChooser.ExtensionFilter("Datos RSP (*.rsp)", "*.rsp");
-//        fileChooser.getExtensionFilters().add(extFilter);
+        FileChooser.ExtensionFilter extFilter
+                = new FileChooser.ExtensionFilter("Datos RSP (*.rsp)", "*.rsp");
+        fileChooser.getExtensionFilters().add(extFilter);
         //AQUI MUESTRA EL FILE CHOOSER
         File file = fileChooser.showOpenDialog(openRSP.getScene().getWindow());
         if (file != null) {
@@ -114,15 +136,54 @@ public class FXMLDocumentController implements Initializable {
     //  CONFIGURACION DE LA TABLA PARA QUE MUESTRE LOS DATOS DE LA CLASE RSPDATA
     private void setTable(ObservableList<RspData> dataList) {
         //PARA CADA TIPO DE COLUMNA SE DEBE LIGAR EL TIPO DE DATOS CON EL PROPERTY DE LA CLASE
-        //PARA dataStation SE LIGA CON EL stationProperty()
-        dataStation.setCellValueFactory(cellData -> cellData.getValue().stationProperty());
+        //PARA dataRuta SE LIGA CON EL rutaProperty()
+        System.out.println("hola");
+        
+        dataRuta.setCellValueFactory(cellData -> cellData.getValue().rutaProperty());
         //PARA CADA TIPO DE DATOS DE LA COLUMNA EXISTE UN FACTORY Y DEBE LIGARSE AL APROPIADO
-        //PARA dataStation EN LA CLASE RspData SE DEFINIO QUE LA ESTACION ES UN STRING POR ESO SE UTILIZA EL EditCell.createStringEditCell()
-        dataStation.setCellFactory(new DragSelectionCellFactory<>(column -> EditCell.createStringEditCell()));
-        dataRepetition.setCellValueFactory(cellData -> cellData.getValue().repetitionProperty());
-        dataRepetition.setCellFactory(new DragSelectionCellFactory<>(column -> EditCellNumberDouble.createStringEditCell()));
-        dataStress.setCellValueFactory(cellData -> cellData.getValue().stressProperty());
-        dataStress.setCellFactory(new DragSelectionCellFactory<>(column -> EditCellNumberDouble.createStringEditCell()));
+        //PARA dataRuta EN LA CLASE RspData SE DEFINIO QUE LA ESTACION ES UN STRING POR ESO SE UTILIZA EL EditCell.createStringEditCell()
+        dataRuta.setCellFactory(new DragSelectionCellFactory<>(column -> EditCell.createStringEditCell()));
+        
+        dataFecha.setCellValueFactory(cellData -> cellData.getValue().fechaProperty());
+        dataFecha.setCellFactory(new DragSelectionCellFactory<>(column -> EditCell.createStringEditCell()));
+        
+        dataDescripcion.setCellValueFactory(cellData -> cellData.getValue().descripcionProperty());
+        dataDescripcion.setCellFactory(new DragSelectionCellFactory<>(column -> EditCell.createStringEditCell()));
+             
+        dataEst_ini.setCellValueFactory(cellData -> cellData.getValue().est_iniProperty());
+        dataEst_ini.setCellFactory(new DragSelectionCellFactory<>(column -> EditCellNumberDouble.createStringEditCell()));
+        
+        dataEst_fin.setCellValueFactory(cellData -> cellData.getValue().est_finProperty());
+        dataEst_fin.setCellFactory(new DragSelectionCellFactory<>(column -> EditCellNumberDouble.createStringEditCell()));
+        
+        dataIri_izq.setCellValueFactory(cellData -> cellData.getValue().iri_izqProperty());
+        dataIri_izq.setCellFactory(new DragSelectionCellFactory<>(column -> EditCellNumberDouble.createStringEditCell()));
+        
+        dataIri_cen.setCellValueFactory(cellData -> cellData.getValue().iri_cenProperty());
+        dataIri_cen.setCellFactory(new DragSelectionCellFactory<>(column -> EditCellNumberDouble.createStringEditCell()));
+        
+        dataIri_der.setCellValueFactory(cellData -> cellData.getValue().iri_derProperty());
+        dataIri_der.setCellFactory(new DragSelectionCellFactory<>(column -> EditCellNumberDouble.createStringEditCell()));
+        
+        dataMri.setCellValueFactory(cellData -> cellData.getValue().mriProperty());
+        dataMri.setCellFactory(new DragSelectionCellFactory<>(column -> EditCellNumberDouble.createStringEditCell()));
+        
+        dataEst.setCellValueFactory(cellData -> cellData.getValue().estProperty());
+        dataEst.setCellFactory(new DragSelectionCellFactory<>(column -> EditCellNumberDouble.createStringEditCell()));
+       
+        dataEvento.setCellValueFactory(cellData -> cellData.getValue().eventoProperty());
+        dataEvento.setCellFactory(new DragSelectionCellFactory<>(column -> EditCell.createStringEditCell()));
+        
+        dataLatitud.setCellValueFactory(cellData -> cellData.getValue().latitudProperty());
+        dataLatitud.setCellFactory(new DragSelectionCellFactory<>(column -> EditCellNumberDouble.createStringEditCell()));
+        
+        dataLongitud.setCellValueFactory(cellData -> cellData.getValue().longitudProperty());
+        dataLongitud.setCellFactory(new DragSelectionCellFactory<>(column -> EditCellNumberDouble.createStringEditCell()));
+
+        dataNotas.setCellValueFactory(cellData -> cellData.getValue().notasProperty());
+        dataNotas.setCellFactory(new DragSelectionCellFactory<>(column -> EditCell.createStringEditCell()));
+        
+        
         dataBaseTable.setItems(dataList);
         dataBaseTable.refresh();
         dataBaseTable.setEditable(false);
@@ -137,11 +198,24 @@ public class FXMLDocumentController implements Initializable {
     
 // APAGA LA EDICION DE LAS COLUMNAS DE LA TABLA
     private void setEditableCols(boolean enabled) {
-        dataStation.setEditable(enabled);
-        dataRepetition.setEditable(enabled);
-        dataStress.setEditable(enabled);
+        dataRuta.setEditable(enabled);
+        dataFecha.setEditable(enabled);
+        dataDescripcion.setEditable(enabled);
+        dataEst_ini.setEditable(enabled);
+        dataEst_fin.setEditable(enabled);
+        dataIri_izq.setEditable(enabled);
+        dataIri_cen.setEditable(enabled);
+        dataIri_der.setEditable(enabled);
+        dataMri.setEditable(enabled);
+        dataEst.setEditable(enabled);
+        dataEvento.setEditable(enabled);
+        dataLatitud.setEditable(enabled);
+        dataLongitud.setEditable(enabled);
+        dataNotas.setEditable(enabled);
+
     }
 
+    
     // BOTON PARA ACTIVAR EDICION
     @FXML
     public void editRSP(ActionEvent event) {
@@ -149,7 +223,7 @@ public class FXMLDocumentController implements Initializable {
             setEditableCols(true);
         } else {
         }
-
+        
     }
 
     //BOTON DE GUARDAR DESACTIVA LA EDICIÓN
@@ -219,14 +293,40 @@ public class FXMLDocumentController implements Initializable {
         StringBuilder sb;
         sb = new StringBuilder();
         dataBaseItem = new RspData();
+        sb.append("Ruta,Fecha,Descripcion,Est_ini,Est_Fin,IRI_Izq,IRI_Cen,IRI_Der,MRI,Est,Evento,Latitud,Longitud,Notas");
+        sb.append("\n");
         for (int i = 0; i < dataBaseTable.getItems().size(); i++) {
             dataBaseItem = dataBaseTable.getItems().get(i);
-            sb.append(dataBaseItem.getStation());
+            
+            sb.append(dataBaseItem.getRuta());
             sb.append(",");
-            sb.append(dataBaseItem.getRepetition());
+            sb.append(dataBaseItem.getFecha());
             sb.append(",");
-            sb.append(dataBaseItem.getStress());
+            sb.append(dataBaseItem.getDescripcion());
+            sb.append(",");
+            sb.append(dataBaseItem.getEst_ini());
+            sb.append(",");
+            sb.append(dataBaseItem.getEst_fin());
+            sb.append(",");
+            sb.append(dataBaseItem.getIri_izq());
+            sb.append(",");
+            sb.append(dataBaseItem.getIri_cen());
+            sb.append(",");
+            sb.append(dataBaseItem.getIri_der());
+            sb.append(",");
+            sb.append(dataBaseItem.getMri());
+            sb.append(",");
+            sb.append(dataBaseItem.getEst());
+            sb.append(",");
+            sb.append(dataBaseItem.getEvento());
+            sb.append(",");
+            sb.append(dataBaseItem.getLatitud());
+            sb.append(",");
+            sb.append(dataBaseItem.getLongitud());
+            sb.append(",");
+            sb.append(dataBaseItem.getNotas());
             sb.append("\n");
+            
         }
         return sb;
     }
