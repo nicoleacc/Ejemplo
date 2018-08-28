@@ -23,8 +23,6 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 import util.DragSelectionCellFactory;
@@ -41,13 +39,10 @@ import util.TableUtils;
 public class FXMLDocumentController implements Initializable {
 
     @FXML
-    private ToggleButton showRSP;
-    @FXML
     private SplitPane divider;
     @FXML
     private Button openRSP;
-    @FXML
-    private TextArea contents;
+
     @FXML
     private Button saveRSP;
     @FXML
@@ -73,7 +68,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TableColumn<RspData, String> dataEvento;
     @FXML
-     private TableColumn<RspData, Number> dataLatitud;
+    private TableColumn<RspData, Number> dataLatitud;
     @FXML
     private TableColumn<RspData, Number> dataLongitud;
     @FXML
@@ -119,7 +114,6 @@ public class FXMLDocumentController implements Initializable {
             rootDirectory = file.getParent();
             rootFileName = removeExtension(file.getName());
             printElements = new StringBuilder();
-            System.out.println(rootDirectory);
             //AQUI CREA UN OBJETO DE LECTURA VER CLASE READRSP
             ReadRSP rsp = new ReadRSP();
             //UNA VEZ ABIERTO SE ASIGNA AL OBJETO BASE DE DATOS GLOBAL
@@ -128,8 +122,6 @@ public class FXMLDocumentController implements Initializable {
             //AQUI SE MUESTRAN LOS DATOS ADQUIRIDOS DESDE EL ARCHIVO EN LA TABLA
             setTable(dataList);
 
-            contents.setText(rsp.contents);
-
         }
     }
 
@@ -137,53 +129,51 @@ public class FXMLDocumentController implements Initializable {
     private void setTable(ObservableList<RspData> dataList) {
         //PARA CADA TIPO DE COLUMNA SE DEBE LIGAR EL TIPO DE DATOS CON EL PROPERTY DE LA CLASE
         //PARA dataRuta SE LIGA CON EL rutaProperty()
-        System.out.println("hola");
-        
+
         dataRuta.setCellValueFactory(cellData -> cellData.getValue().rutaProperty());
         //PARA CADA TIPO DE DATOS DE LA COLUMNA EXISTE UN FACTORY Y DEBE LIGARSE AL APROPIADO
         //PARA dataRuta EN LA CLASE RspData SE DEFINIO QUE LA ESTACION ES UN STRING POR ESO SE UTILIZA EL EditCell.createStringEditCell()
         dataRuta.setCellFactory(new DragSelectionCellFactory<>(column -> EditCell.createStringEditCell()));
-        
+
         dataFecha.setCellValueFactory(cellData -> cellData.getValue().fechaProperty());
         dataFecha.setCellFactory(new DragSelectionCellFactory<>(column -> EditCell.createStringEditCell()));
-        
+
         dataDescripcion.setCellValueFactory(cellData -> cellData.getValue().descripcionProperty());
         dataDescripcion.setCellFactory(new DragSelectionCellFactory<>(column -> EditCell.createStringEditCell()));
-             
+
         dataEst_ini.setCellValueFactory(cellData -> cellData.getValue().est_iniProperty());
         dataEst_ini.setCellFactory(new DragSelectionCellFactory<>(column -> EditCellNumberDouble.createStringEditCell()));
-        
+
         dataEst_fin.setCellValueFactory(cellData -> cellData.getValue().est_finProperty());
         dataEst_fin.setCellFactory(new DragSelectionCellFactory<>(column -> EditCellNumberDouble.createStringEditCell()));
-        
+
         dataIri_izq.setCellValueFactory(cellData -> cellData.getValue().iri_izqProperty());
         dataIri_izq.setCellFactory(new DragSelectionCellFactory<>(column -> EditCellNumberDouble.createStringEditCell()));
-        
+
         dataIri_cen.setCellValueFactory(cellData -> cellData.getValue().iri_cenProperty());
         dataIri_cen.setCellFactory(new DragSelectionCellFactory<>(column -> EditCellNumberDouble.createStringEditCell()));
-        
+
         dataIri_der.setCellValueFactory(cellData -> cellData.getValue().iri_derProperty());
         dataIri_der.setCellFactory(new DragSelectionCellFactory<>(column -> EditCellNumberDouble.createStringEditCell()));
-        
+
         dataMri.setCellValueFactory(cellData -> cellData.getValue().mriProperty());
         dataMri.setCellFactory(new DragSelectionCellFactory<>(column -> EditCellNumberDouble.createStringEditCell()));
-        
+
         dataEst.setCellValueFactory(cellData -> cellData.getValue().estProperty());
         dataEst.setCellFactory(new DragSelectionCellFactory<>(column -> EditCellNumberDouble.createStringEditCell()));
-       
+
         dataEvento.setCellValueFactory(cellData -> cellData.getValue().eventoProperty());
         dataEvento.setCellFactory(new DragSelectionCellFactory<>(column -> EditCell.createStringEditCell()));
-        
+
         dataLatitud.setCellValueFactory(cellData -> cellData.getValue().latitudProperty());
         dataLatitud.setCellFactory(new DragSelectionCellFactory<>(column -> EditCellNumberDouble.createStringEditCell()));
-        
+
         dataLongitud.setCellValueFactory(cellData -> cellData.getValue().longitudProperty());
         dataLongitud.setCellFactory(new DragSelectionCellFactory<>(column -> EditCellNumberDouble.createStringEditCell()));
 
         dataNotas.setCellValueFactory(cellData -> cellData.getValue().notasProperty());
         dataNotas.setCellFactory(new DragSelectionCellFactory<>(column -> EditCell.createStringEditCell()));
-        
-        
+
         dataBaseTable.setItems(dataList);
         dataBaseTable.refresh();
         dataBaseTable.setEditable(false);
@@ -195,7 +185,7 @@ public class FXMLDocumentController implements Initializable {
         dataBaseTable.setEditable(true);
         setEditableCols(false);
     }
-    
+
 // APAGA LA EDICION DE LAS COLUMNAS DE LA TABLA
     private void setEditableCols(boolean enabled) {
         dataRuta.setEditable(enabled);
@@ -215,7 +205,6 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-    
     // BOTON PARA ACTIVAR EDICION
     @FXML
     public void editRSP(ActionEvent event) {
@@ -223,7 +212,7 @@ public class FXMLDocumentController implements Initializable {
             setEditableCols(true);
         } else {
         }
-        
+
     }
 
     //BOTON DE GUARDAR DESACTIVA LA EDICIÓN
@@ -234,28 +223,11 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-    //MUESTRA VENTANA CON EL CONTENIDO DEL ARCHIVO
-    @FXML
-    public void showContents(ActionEvent event) {
-
-        if (!rootDirectory.isEmpty()) {
-            if (showRSP.isSelected()) {
-                divider.setDividerPositions(0.8);
-            } else {
-                divider.setDividerPositions(1.0);
-            }
-
-        } else {
-            showRSP.setSelected(false);
-        }
-    }
-
     //EXPORTA EL CONTENIDO DE LA TABLE 
     @FXML
     public void exportRSP(ActionEvent event) {
         printElements = printElements();
         if (printElements.toString().isEmpty()) {
-            System.out.println("empty");
         } else {
             //ASI SE DECLARA EL FILECHOOSER
             FileChooser fileChooser = new FileChooser();
@@ -297,7 +269,7 @@ public class FXMLDocumentController implements Initializable {
         sb.append("\n");
         for (int i = 0; i < dataBaseTable.getItems().size(); i++) {
             dataBaseItem = dataBaseTable.getItems().get(i);
-            
+
             sb.append(dataBaseItem.getRuta());
             sb.append(",");
             sb.append(dataBaseItem.getFecha());
@@ -326,7 +298,7 @@ public class FXMLDocumentController implements Initializable {
             sb.append(",");
             sb.append(dataBaseItem.getNotas());
             sb.append("\n");
-            
+
         }
         return sb;
     }
@@ -352,5 +324,4 @@ public class FXMLDocumentController implements Initializable {
 
         return filename.substring(0, extensionIndex);
     }
-
 }

@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -12,8 +7,6 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -21,7 +14,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="850.0" prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ejemplo.FXMLDocumentController">
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="850.0" prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ejemplo.FXMLDocumentController">
    <content>
       <BorderPane>
          <top>
@@ -71,7 +64,7 @@
                   <HBox VBox.vgrow="ALWAYS">
                      <children>
                         <Region layoutX="953.0" layoutY="10.0" minWidth="5.0" prefWidth="5.0" />
-                        <SplitPane fx:id="divider" dividerPositions="0.8" HBox.hgrow="ALWAYS">
+                        <SplitPane fx:id="divider" HBox.hgrow="ALWAYS">
                            <items>
                               <TableView fx:id="dataBaseTable">
                                 <columns>
@@ -94,11 +87,6 @@
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy>
                               </TableView>
-                              <HBox minWidth="0.0">
-                                 <children>
-                                    <TextArea fx:id="contents" editable="false" text="Contenido del Archivo&#10;" HBox.hgrow="ALWAYS" />
-                                 </children>
-                              </HBox>
                            </items>
                         </SplitPane>
                         <Region prefWidth="5.0" />
@@ -114,7 +102,6 @@
                         <Region layoutX="105.0" layoutY="10.0" prefWidth="5.0" />
                         <Button fx:id="saveRSP" layoutX="110.0" layoutY="10.0" minWidth="90.0" mnemonicParsing="false" onAction="#saveRSP" text="Guardar" />
                         <Region HBox.hgrow="ALWAYS" />
-                        <ToggleButton fx:id="showRSP" mnemonicParsing="false" onAction="#showContents" text="Contenido " />
                         <Region layoutX="295.0" layoutY="10.0" minWidth="5.0" HBox.hgrow="NEVER" />
                         <Button fx:id="exportRSP" layoutX="110.0" layoutY="10.0" minWidth="90.0" mnemonicParsing="false" onAction="#exportRSP" text="Exportar" />
                         <Region layoutX="105.0" layoutY="10.0" prefWidth="5.0" />
